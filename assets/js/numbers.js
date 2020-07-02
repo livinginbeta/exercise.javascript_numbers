@@ -2,27 +2,135 @@ function compute(expression) {
     // TODO - write method definition here
     var expressionArray = new Array();
     var expressionArray = expression.split('');
+    var solutionSwap;
 
-    for (counter = 0; counter < 10; counter++) {        
+    //MULTIPLICATION
+    for (counter = 0; counter < 4; counter++) {        
         for (element = 0; element < expressionArray.length; element++) {
             if (expressionArray[element] == '*') {
-                var solutionSwap = parseInt(expressionArray[element -1]) * parseInt(expressionArray[element +1]);
-                expressionArray.splice(element-1, 3, solutionSwap);                    
+                if (!isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) * parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-2, 5, solutionSwap); 
+                }
+
+                if (!isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) * parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-2, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) * parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-1, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) * parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-1, 3, solutionSwap);   
+                }                 
             }
+        } 
+    }
+
+
+    //DIVISION
+    for (counter = 0; counter < 4; counter++) {        
+        for (element = 0; element < expressionArray.length; element++) {
             if (expressionArray[element] == '/') {
-                    var solutionSwap = parseInt(expressionArray[element -1]) / parseInt(expressionArray[element +1]);
+                if (!isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) / parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-2, 5, solutionSwap); 
+                }
+
+                if (!isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) / parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-2, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) / parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-1, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) / parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-1, 3, solutionSwap);   
+                }                 
+            }
+        } 
+    }
+
+
+
+
+    //ADDITION
+    for (counter = 0; counter < 4; counter++) {        
+        for (element = 0; element < expressionArray.length; element++) {
+            if (expressionArray[element] == '+') {
+                if (!isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) + parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-2, 5, solutionSwap); 
+                }
+
+                if (!isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) + parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-2, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) + parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-1, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) + parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-1, 3, solutionSwap);   
+                }                 
+            }
+        } 
+    }
+
+
+    //SUBTRACTION
+    for (counter = 0; counter < 4; counter++) {        
+        for (element = 0; element < expressionArray.length; element++) {
+            if (expressionArray[element] == '-') {
+                if (!isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) - parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-2, 5, solutionSwap); 
+                }
+
+                if (!isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -2]) - parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-2, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && !isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) - parseFloat(expressionArray[element +2]);
+                    expressionArray.splice(element-1, 4, solutionSwap); 
+                }
+
+                if (isNaN(parseFloat(expressionArray[element -2])) && isNaN(parseFloat(expressionArray[element +2]))) {
+                    solutionSwap = parseFloat(expressionArray[element -1]) - parseFloat(expressionArray[element +1]);
+                    expressionArray.splice(element-1, 3, solutionSwap);   
+                }                 
+            }
+        } 
+    }
+
+/*
+            if (expressionArray[element] == '/') {
+                    var solutionSwap = parseFloat(expressionArray[element -1]) / parseFloat(expressionArray[element +1]);
                     expressionArray.splice(element-1, 3, solutionSwap);                   
             }   
             if (expressionArray[element] == '+') {
-                var solutionSwap = parseInt(expressionArray[element -1]) + parseInt(expressionArray[element +1]);
+                var solutionSwap = parseFloat(expressionArray[element -1]) + parseFloat(expressionArray[element +1]);
                 expressionArray.splice(element-1, 3, solutionSwap);                    
             }
             if (expressionArray[element] == '-') {
-                var solutionSwap = parseInt(expressionArray[element -1]) - parseInt(expressionArray[element +1]);
+                var solutionSwap = parseFloat(expressionArray[element -1]) - parseFloat(expressionArray[element +1]);
                 expressionArray.splice(element-1, 3, solutionSwap);                   
             }
-        } 
-    } 
-    //return parseInt(solution.substring(9));
+         */
+     
     return expressionArray;
 }
